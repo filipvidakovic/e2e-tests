@@ -75,7 +75,7 @@ public class EventsTest {
         // mat-select for event type
         WebElement select = driver.findElement(By.cssSelector("mat-select[formcontrolname='eventType']"));
         select.click();
-        WebElement option = driver.findElement(By.cssSelector("mat-option"));
+        WebElement option = driver.findElement(By.xpath("//mat-option"));
 
         option.click();
 
