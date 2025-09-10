@@ -226,13 +226,13 @@ public class EventsTest {
         driver.findElement(By.cssSelector("input[formcontrolname='startTime']")).sendKeys("11:00");
         driver.findElement(By.cssSelector("input[formcontrolname='endTime']")).sendKeys("12:00");
         driver.findElement(By.cssSelector("input[formcontrolname='location']")).sendKeys("Room 1");
-        Thread.sleep(1000);
 
         // save
         Thread.sleep(2000);
 
         WebElement saveBtn = driver.findElement(By.xpath("//button[normalize-space()='Save']"));
         assertFalse(saveBtn.isEnabled());
+        driver.findElement(By.xpath("//button[normalize-space()='Cancel']")).click();
 
         takeScreenshot("Test5_AddActivity_Fail_EmptyName.png");
     }
