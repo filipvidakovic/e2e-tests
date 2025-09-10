@@ -63,7 +63,7 @@ public class EventsTest {
         // go directly to new event page
         driver.get("http://localhost:4200/new-event");
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         // fill out event form (adjust IDs/names to your template)
         driver.findElement(By.id("name")).sendKeys("Automation Test Event");
         driver.findElement(By.id("description")).sendKeys("Created by Selenium");
@@ -71,12 +71,14 @@ public class EventsTest {
 
         WebElement dateInput = driver.findElement(By.id("date"));
         dateInput.sendKeys("2025-12-31");
-
+        Thread.sleep(1000);
         // mat-select for event type
         WebElement select = driver.findElement(By.cssSelector("mat-select[formcontrolname='eventType']"));
         select.click();
+        Thread.sleep(1000);
         WebElement option = driver.findElement(By.xpath("//mat-option"));
 
+        Thread.sleep(1000);
         option.click();
 
         // check "open"
