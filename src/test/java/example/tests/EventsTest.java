@@ -63,6 +63,7 @@ public class EventsTest {
         // go directly to new event page
         driver.get("http://localhost:4200/new-event");
 
+        Thread.sleep(2000);
         // fill out event form (adjust IDs/names to your template)
         driver.findElement(By.id("name")).sendKeys("Automation Test Event");
         driver.findElement(By.id("description")).sendKeys("Created by Selenium");
@@ -74,8 +75,8 @@ public class EventsTest {
         // mat-select for event type
         WebElement select = driver.findElement(By.cssSelector("mat-select[formcontrolname='eventType']"));
         select.click();
-        Thread.sleep(2000);
         WebElement option = driver.findElement(By.cssSelector("mat-option"));
+
         option.click();
 
         // check "open"
@@ -286,9 +287,6 @@ public class EventsTest {
         takeScreenshot("Test7_AddActivity_Fail_Overlap.png");
     }
 
-
-
-
     private void takeScreenshot(String filename) {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File file = ts.getScreenshotAs(OutputType.FILE);
@@ -302,6 +300,26 @@ public class EventsTest {
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+        try {
+            // Click the Delete button
+            WebElement deleteBtn = driver.findElement(By.xpath("//span[text()='Delete']/ancestor::button"));
+            deleteBtn.click();
+
+            // Wait for the confirmation dialog to appear and click "Yes, delete"
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement confirmBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.id("delete") // id of the confirm button
+            ));
+            confirmBtn.click();
+
+            // Optional: wait a moment for deletion to complete
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("No activity to delete or already deleted.");
+        } finally {
+            driver.quit();
+        }
     }
+
+
 }
