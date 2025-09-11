@@ -428,24 +428,6 @@ public class EventFilteringTest {
 
     @AfterClass
     public void tearDown() {
-//        try {
-//            // Click the Delete button
-//            WebElement deleteBtn = driver.findElement(By.xpath("//span[text()='Delete']/ancestor::button"));
-//            deleteBtn.click();
-//
-//            // Wait for the confirmation dialog to appear and click "Yes, delete"
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-//            WebElement confirmBtn = wait.until(ExpectedConditions.elementToBeClickable(
-//                    By.id("delete") // id of the confirm button
-//            ));
-//            confirmBtn.click();
-//
-//            // Optional: wait a moment for deletion to complete
-//            Thread.sleep(1000);
-//        } catch (Exception e) {
-//            System.out.println("No activity to delete or already deleted.");
-//        } finally {
-            driver.quit();
-//        }
+        driver.quit();
     }
 }
